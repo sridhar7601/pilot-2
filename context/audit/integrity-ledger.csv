@@ -1,0 +1,138 @@
+timestamp,scope,approver,gate_ref,path,sha256
+2026-06-25T04:16:14Z,Stage 1,Ashwin Balasubramaniam,GATE:Stage 1,context/requirements/expense-status.feature,44b6bf8f02527ac941cd6f24f88a92e98a4871ff07d60355f76e0397f6e06778
+2026-06-25T04:16:14Z,Stage 1,Ashwin Balasubramaniam,GATE:Stage 1,context/requirements/expense-analytics.feature,d38eb989dd2a293cdc02951ee37aadc6fa05f65ffe7cd18a159704c02d99b5b6
+2026-06-25T04:16:14Z,Stage 1,Ashwin Balasubramaniam,GATE:Stage 1,context/requirements/expense-submission.feature,3c2fa702154e0799897d93ed27234db8ca0e04c9939ac9a2282380c0772c6a5d
+2026-06-25T04:16:14Z,Stage 1,Ashwin Balasubramaniam,GATE:Stage 1,context/requirements/expense-policy.feature,ed72e04c6c86378537f8969ab82c63e5d924f1782fde90f7cbf133a9e4ea2dd5
+2026-06-25T04:16:14Z,Stage 1,Ashwin Balasubramaniam,GATE:Stage 1,context/requirements/expense-auth.feature,a207e8ca47a0d91445681de1f110b221129ba5c2a4faa39c21efbb77d94fe936
+2026-06-25T04:16:14Z,Stage 1,Ashwin Balasubramaniam,GATE:Stage 1,context/requirements/expense-approval.feature,00a82fa44e009c3017755a9534eb5180f0e135019da09770e5b69b7afec31eed
+2026-06-25T04:16:14Z,Stage 1,Ashwin Balasubramaniam,GATE:Stage 1,context/decisions/ADR-0002-event-sourced-lifecycle.md,5673fed020a232bd13a31bba6371e4b78e2efa9692cee6b981f7b147b6b44748
+2026-06-25T04:16:14Z,Stage 1,Ashwin Balasubramaniam,GATE:Stage 1,context/decisions/ADR-0001-stack-and-ai-boundary.md,017e47a724b94f18c67909c92b22a90d6ad89a8fd821b4c25d37ba0b57f0719c
+2026-06-25T04:16:14Z,Stage 1,Ashwin Balasubramaniam,GATE:Stage 1,context/artifacts/design/architecture.md,203dc5cc6061fddae8b9f8a42279fa263f4e9478488f265860cca0d7c1cfa458
+2026-06-25T04:16:14Z,Stage 1,Ashwin Balasubramaniam,GATE:Stage 1,context/artifacts/design/wireframes.md,d570a41d0ea8da7910c541ac0cec64550681112ec0bec72b3e8451f70e510255
+2026-06-25T04:16:14Z,Stage 1,Ashwin Balasubramaniam,GATE:Stage 1,context/artifacts/contracts/api-spec.yaml,74a66206175c7c95984d6f81f5ecf24a93ce020ea55fbf0ca88122209207cc35
+2026-06-25T04:16:14Z,Stage 1,Ashwin Balasubramaniam,GATE:Stage 1,context/artifacts/coverage-matrix-expense-platform.md,88fe3ed4083e7283dcee01b3219e20fc491a19869a2b2947d7ea8801dbb1f284
+2026-06-25T04:16:14Z,Stage 1,Ashwin Balasubramaniam,GATE:Stage 1,context/artifacts/sow-expense-platform.md,b86a6e43b86ff3499c4406ddbca777df252a1886a61c157dd57a6331481f5646
+2026-06-25T04:16:14Z,Stage 1,Ashwin Balasubramaniam,GATE:Stage 1,context/artifacts/data-model.md,becefb0806cdfe431f15bcb41242d7ddee77a3459b06d4810a9eccda66a6b27e
+2026-06-25T04:16:14Z,Stage 1,Ashwin Balasubramaniam,GATE:Stage 1,context/artifacts/timeline-expense-platform.md,037efc76a12f3ce6d652e0262e94d6b7a50177f9b25120d9945209af2c43818a
+2026-06-25T04:17:00Z,G4,Ashwin Balasubramaniam,GATE:G4,context/requirements/expense-status.feature,44b6bf8f02527ac941cd6f24f88a92e98a4871ff07d60355f76e0397f6e06778
+2026-06-25T04:17:00Z,G4,Ashwin Balasubramaniam,GATE:G4,context/requirements/expense-analytics.feature,d38eb989dd2a293cdc02951ee37aadc6fa05f65ffe7cd18a159704c02d99b5b6
+2026-06-25T04:17:00Z,G4,Ashwin Balasubramaniam,GATE:G4,context/requirements/expense-submission.feature,3c2fa702154e0799897d93ed27234db8ca0e04c9939ac9a2282380c0772c6a5d
+2026-06-25T04:17:00Z,G4,Ashwin Balasubramaniam,GATE:G4,context/requirements/expense-policy.feature,ed72e04c6c86378537f8969ab82c63e5d924f1782fde90f7cbf133a9e4ea2dd5
+2026-06-25T04:17:00Z,G4,Ashwin Balasubramaniam,GATE:G4,context/requirements/expense-auth.feature,a207e8ca47a0d91445681de1f110b221129ba5c2a4faa39c21efbb77d94fe936
+2026-06-25T04:17:00Z,G4,Ashwin Balasubramaniam,GATE:G4,context/requirements/expense-approval.feature,00a82fa44e009c3017755a9534eb5180f0e135019da09770e5b69b7afec31eed
+2026-06-25T04:17:00Z,G4,Ashwin Balasubramaniam,GATE:G4,context/decisions/ADR-0002-event-sourced-lifecycle.md,5673fed020a232bd13a31bba6371e4b78e2efa9692cee6b981f7b147b6b44748
+2026-06-25T04:17:00Z,G4,Ashwin Balasubramaniam,GATE:G4,context/decisions/ADR-0001-stack-and-ai-boundary.md,017e47a724b94f18c67909c92b22a90d6ad89a8fd821b4c25d37ba0b57f0719c
+2026-06-25T04:17:00Z,G4,Ashwin Balasubramaniam,GATE:G4,context/artifacts/design/architecture.md,203dc5cc6061fddae8b9f8a42279fa263f4e9478488f265860cca0d7c1cfa458
+2026-06-25T04:17:00Z,G4,Ashwin Balasubramaniam,GATE:G4,context/artifacts/design/wireframes.md,d570a41d0ea8da7910c541ac0cec64550681112ec0bec72b3e8451f70e510255
+2026-06-25T04:17:00Z,G4,Ashwin Balasubramaniam,GATE:G4,context/artifacts/contracts/api-spec.yaml,74a66206175c7c95984d6f81f5ecf24a93ce020ea55fbf0ca88122209207cc35
+2026-06-25T04:17:00Z,G4,Ashwin Balasubramaniam,GATE:G4,context/artifacts/runbooks/expense-platform-deploy.md,be4b1876c614cb28002b1c60eb67e195142adbfefd24108792c1c7536290e665
+2026-06-25T04:17:00Z,G4,Ashwin Balasubramaniam,GATE:G4,context/artifacts/coverage-matrix-expense-platform.md,88fe3ed4083e7283dcee01b3219e20fc491a19869a2b2947d7ea8801dbb1f284
+2026-06-25T04:17:00Z,G4,Ashwin Balasubramaniam,GATE:G4,context/artifacts/sow-expense-platform.md,b86a6e43b86ff3499c4406ddbca777df252a1886a61c157dd57a6331481f5646
+2026-06-25T04:17:00Z,G4,Ashwin Balasubramaniam,GATE:G4,context/artifacts/attestation/developer-phase-4-attestation.md,7e08ee52b26eb5a4198014d66a302773491bf07c800dd5e4ec7310d444d1bfbf
+2026-06-25T04:17:00Z,G4,Ashwin Balasubramaniam,GATE:G4,context/artifacts/attestation/devops-phase-3-attestation.md,1caac0dbb6384b105e32ebb7c98cd17743793e938c602438d11bb13ffdc9ff16
+2026-06-25T04:17:00Z,G4,Ashwin Balasubramaniam,GATE:G4,context/artifacts/attestation/data-engineer-phase-5-attestation.md,c14bbaa3a9c1ff77ecbd76ad3e645a337fdfa8a09d7b34911d9ae2e78856a1bc
+2026-06-25T04:17:00Z,G4,Ashwin Balasubramaniam,GATE:G4,context/artifacts/data-model.md,becefb0806cdfe431f15bcb41242d7ddee77a3459b06d4810a9eccda66a6b27e
+2026-06-25T04:17:00Z,G4,Ashwin Balasubramaniam,GATE:G4,context/artifacts/release-notes-expense-platform.md,b0775d503b5ef13d58b24a294b8d4e96c6042dcb0357aa4a15f246e53502f876
+2026-06-25T04:17:00Z,G4,Ashwin Balasubramaniam,GATE:G4,context/artifacts/timeline-expense-platform.md,037efc76a12f3ce6d652e0262e94d6b7a50177f9b25120d9945209af2c43818a
+2026-06-25T04:27:27Z,G5,Ashwin Balasubramaniam,GATE:G5,context/requirements/expense-status.feature,44b6bf8f02527ac941cd6f24f88a92e98a4871ff07d60355f76e0397f6e06778
+2026-06-25T04:27:27Z,G5,Ashwin Balasubramaniam,GATE:G5,context/requirements/expense-analytics.feature,d38eb989dd2a293cdc02951ee37aadc6fa05f65ffe7cd18a159704c02d99b5b6
+2026-06-25T04:27:27Z,G5,Ashwin Balasubramaniam,GATE:G5,context/requirements/expense-submission.feature,3c2fa702154e0799897d93ed27234db8ca0e04c9939ac9a2282380c0772c6a5d
+2026-06-25T04:27:27Z,G5,Ashwin Balasubramaniam,GATE:G5,context/requirements/expense-policy.feature,ed72e04c6c86378537f8969ab82c63e5d924f1782fde90f7cbf133a9e4ea2dd5
+2026-06-25T04:27:27Z,G5,Ashwin Balasubramaniam,GATE:G5,context/requirements/expense-auth.feature,a207e8ca47a0d91445681de1f110b221129ba5c2a4faa39c21efbb77d94fe936
+2026-06-25T04:27:27Z,G5,Ashwin Balasubramaniam,GATE:G5,context/requirements/expense-approval.feature,00a82fa44e009c3017755a9534eb5180f0e135019da09770e5b69b7afec31eed
+2026-06-25T04:27:27Z,G5,Ashwin Balasubramaniam,GATE:G5,context/decisions/ADR-0002-event-sourced-lifecycle.md,5673fed020a232bd13a31bba6371e4b78e2efa9692cee6b981f7b147b6b44748
+2026-06-25T04:27:27Z,G5,Ashwin Balasubramaniam,GATE:G5,context/decisions/ADR-0001-stack-and-ai-boundary.md,017e47a724b94f18c67909c92b22a90d6ad89a8fd821b4c25d37ba0b57f0719c
+2026-06-25T04:27:27Z,G5,Ashwin Balasubramaniam,GATE:G5,context/artifacts/design/architecture.md,203dc5cc6061fddae8b9f8a42279fa263f4e9478488f265860cca0d7c1cfa458
+2026-06-25T04:27:27Z,G5,Ashwin Balasubramaniam,GATE:G5,context/artifacts/design/wireframes.md,d570a41d0ea8da7910c541ac0cec64550681112ec0bec72b3e8451f70e510255
+2026-06-25T04:27:27Z,G5,Ashwin Balasubramaniam,GATE:G5,context/artifacts/contracts/api-spec.yaml,74a66206175c7c95984d6f81f5ecf24a93ce020ea55fbf0ca88122209207cc35
+2026-06-25T04:27:27Z,G5,Ashwin Balasubramaniam,GATE:G5,context/artifacts/runbooks/expense-platform-deploy.md,be4b1876c614cb28002b1c60eb67e195142adbfefd24108792c1c7536290e665
+2026-06-25T04:27:27Z,G5,Ashwin Balasubramaniam,GATE:G5,context/artifacts/coverage-matrix-expense-platform.md,88fe3ed4083e7283dcee01b3219e20fc491a19869a2b2947d7ea8801dbb1f284
+2026-06-25T04:27:27Z,G5,Ashwin Balasubramaniam,GATE:G5,context/artifacts/sow-expense-platform.md,b86a6e43b86ff3499c4406ddbca777df252a1886a61c157dd57a6331481f5646
+2026-06-25T04:27:27Z,G5,Ashwin Balasubramaniam,GATE:G5,context/artifacts/attestation/developer-phase-4-attestation.md,7e08ee52b26eb5a4198014d66a302773491bf07c800dd5e4ec7310d444d1bfbf
+2026-06-25T04:27:27Z,G5,Ashwin Balasubramaniam,GATE:G5,context/artifacts/attestation/devops-phase-3-attestation.md,1caac0dbb6384b105e32ebb7c98cd17743793e938c602438d11bb13ffdc9ff16
+2026-06-25T04:27:27Z,G5,Ashwin Balasubramaniam,GATE:G5,context/artifacts/attestation/data-engineer-phase-5-attestation.md,c14bbaa3a9c1ff77ecbd76ad3e645a337fdfa8a09d7b34911d9ae2e78856a1bc
+2026-06-25T04:27:27Z,G5,Ashwin Balasubramaniam,GATE:G5,context/artifacts/data-model.md,becefb0806cdfe431f15bcb41242d7ddee77a3459b06d4810a9eccda66a6b27e
+2026-06-25T04:27:27Z,G5,Ashwin Balasubramaniam,GATE:G5,context/artifacts/release-notes-expense-platform.md,b0775d503b5ef13d58b24a294b8d4e96c6042dcb0357aa4a15f246e53502f876
+2026-06-25T04:27:27Z,G5,Ashwin Balasubramaniam,GATE:G5,context/artifacts/timeline-expense-platform.md,037efc76a12f3ce6d652e0262e94d6b7a50177f9b25120d9945209af2c43818a
+2026-06-25T04:27:27Z,G5,Ashwin Balasubramaniam,GATE:G5,context/artifacts/uat-execution-sheet-expense-platform.md,0ffe0576d804241bab45b48b4d988b0144803693b0603a77b59fa97c24f9a446
+2026-06-25T05:29:20Z,G4,Ashwin Balasubramaniam,GATE:G4,context/requirements/expense-status.feature,44b6bf8f02527ac941cd6f24f88a92e98a4871ff07d60355f76e0397f6e06778
+2026-06-25T05:29:20Z,G4,Ashwin Balasubramaniam,GATE:G4,context/requirements/expense-analytics.feature,d38eb989dd2a293cdc02951ee37aadc6fa05f65ffe7cd18a159704c02d99b5b6
+2026-06-25T05:29:20Z,G4,Ashwin Balasubramaniam,GATE:G4,context/requirements/expense-submission.feature,3c2fa702154e0799897d93ed27234db8ca0e04c9939ac9a2282380c0772c6a5d
+2026-06-25T05:29:20Z,G4,Ashwin Balasubramaniam,GATE:G4,context/requirements/expense-policy.feature,ed72e04c6c86378537f8969ab82c63e5d924f1782fde90f7cbf133a9e4ea2dd5
+2026-06-25T05:29:20Z,G4,Ashwin Balasubramaniam,GATE:G4,context/requirements/expense-auth.feature,a207e8ca47a0d91445681de1f110b221129ba5c2a4faa39c21efbb77d94fe936
+2026-06-25T05:29:20Z,G4,Ashwin Balasubramaniam,GATE:G4,context/requirements/expense-approval.feature,00a82fa44e009c3017755a9534eb5180f0e135019da09770e5b69b7afec31eed
+2026-06-25T05:29:20Z,G4,Ashwin Balasubramaniam,GATE:G4,context/decisions/ADR-0002-event-sourced-lifecycle.md,5673fed020a232bd13a31bba6371e4b78e2efa9692cee6b981f7b147b6b44748
+2026-06-25T05:29:20Z,G4,Ashwin Balasubramaniam,GATE:G4,context/decisions/ADR-0001-stack-and-ai-boundary.md,017e47a724b94f18c67909c92b22a90d6ad89a8fd821b4c25d37ba0b57f0719c
+2026-06-25T05:29:20Z,G4,Ashwin Balasubramaniam,GATE:G4,context/artifacts/design/architecture.md,203dc5cc6061fddae8b9f8a42279fa263f4e9478488f265860cca0d7c1cfa458
+2026-06-25T05:29:20Z,G4,Ashwin Balasubramaniam,GATE:G4,context/artifacts/design/wireframes.md,d570a41d0ea8da7910c541ac0cec64550681112ec0bec72b3e8451f70e510255
+2026-06-25T05:29:20Z,G4,Ashwin Balasubramaniam,GATE:G4,context/artifacts/contracts/api-spec.yaml,74a66206175c7c95984d6f81f5ecf24a93ce020ea55fbf0ca88122209207cc35
+2026-06-25T05:29:20Z,G4,Ashwin Balasubramaniam,GATE:G4,context/artifacts/runbooks/expense-platform-deploy.md,be4b1876c614cb28002b1c60eb67e195142adbfefd24108792c1c7536290e665
+2026-06-25T05:29:20Z,G4,Ashwin Balasubramaniam,GATE:G4,context/artifacts/coverage-matrix-expense-platform.md,88fe3ed4083e7283dcee01b3219e20fc491a19869a2b2947d7ea8801dbb1f284
+2026-06-25T05:29:20Z,G4,Ashwin Balasubramaniam,GATE:G4,context/artifacts/sow-expense-platform.md,b86a6e43b86ff3499c4406ddbca777df252a1886a61c157dd57a6331481f5646
+2026-06-25T05:29:20Z,G4,Ashwin Balasubramaniam,GATE:G4,context/artifacts/attestation/developer-phase-4-attestation.md,791610177cbc1d530f388b1bcce3a5c4c53267bf677c9109ac3f29d446f847cf
+2026-06-25T05:29:20Z,G4,Ashwin Balasubramaniam,GATE:G4,context/artifacts/attestation/devops-phase-3-attestation.md,b69cf1904b7640b0e404d11d549d85d27787f6112a9ad28fa18145a8151f61bf
+2026-06-25T05:29:20Z,G4,Ashwin Balasubramaniam,GATE:G4,context/artifacts/attestation/data-engineer-phase-5-attestation.md,80d2032e53a1962c2aab0137dff1cd9cad687e466fe234ec4a1a0117a5bae443
+2026-06-25T05:29:20Z,G4,Ashwin Balasubramaniam,GATE:G4,context/artifacts/data-model.md,becefb0806cdfe431f15bcb41242d7ddee77a3459b06d4810a9eccda66a6b27e
+2026-06-25T05:29:20Z,G4,Ashwin Balasubramaniam,GATE:G4,context/artifacts/release-notes-expense-platform.md,b0775d503b5ef13d58b24a294b8d4e96c6042dcb0357aa4a15f246e53502f876
+2026-06-25T05:29:20Z,G4,Ashwin Balasubramaniam,GATE:G4,context/artifacts/timeline-expense-platform.md,037efc76a12f3ce6d652e0262e94d6b7a50177f9b25120d9945209af2c43818a
+2026-06-25T05:29:20Z,G4,Ashwin Balasubramaniam,GATE:G4,context/artifacts/uat-execution-sheet-expense-platform.md,0ffe0576d804241bab45b48b4d988b0144803693b0603a77b59fa97c24f9a446
+2026-06-25T05:46:22Z,G5,Ashwin Balasubramaniam,GATE:G5,context/requirements/expense-status.feature,44b6bf8f02527ac941cd6f24f88a92e98a4871ff07d60355f76e0397f6e06778
+2026-06-25T05:46:22Z,G5,Ashwin Balasubramaniam,GATE:G5,context/requirements/expense-analytics.feature,d38eb989dd2a293cdc02951ee37aadc6fa05f65ffe7cd18a159704c02d99b5b6
+2026-06-25T05:46:22Z,G5,Ashwin Balasubramaniam,GATE:G5,context/requirements/expense-submission.feature,3c2fa702154e0799897d93ed27234db8ca0e04c9939ac9a2282380c0772c6a5d
+2026-06-25T05:46:22Z,G5,Ashwin Balasubramaniam,GATE:G5,context/requirements/expense-policy.feature,ed72e04c6c86378537f8969ab82c63e5d924f1782fde90f7cbf133a9e4ea2dd5
+2026-06-25T05:46:22Z,G5,Ashwin Balasubramaniam,GATE:G5,context/requirements/expense-auth.feature,a207e8ca47a0d91445681de1f110b221129ba5c2a4faa39c21efbb77d94fe936
+2026-06-25T05:46:22Z,G5,Ashwin Balasubramaniam,GATE:G5,context/requirements/expense-approval.feature,00a82fa44e009c3017755a9534eb5180f0e135019da09770e5b69b7afec31eed
+2026-06-25T05:46:22Z,G5,Ashwin Balasubramaniam,GATE:G5,context/decisions/ADR-0002-event-sourced-lifecycle.md,5673fed020a232bd13a31bba6371e4b78e2efa9692cee6b981f7b147b6b44748
+2026-06-25T05:46:22Z,G5,Ashwin Balasubramaniam,GATE:G5,context/decisions/ADR-0001-stack-and-ai-boundary.md,017e47a724b94f18c67909c92b22a90d6ad89a8fd821b4c25d37ba0b57f0719c
+2026-06-25T05:46:22Z,G5,Ashwin Balasubramaniam,GATE:G5,context/artifacts/design/architecture.md,203dc5cc6061fddae8b9f8a42279fa263f4e9478488f265860cca0d7c1cfa458
+2026-06-25T05:46:22Z,G5,Ashwin Balasubramaniam,GATE:G5,context/artifacts/design/wireframes.md,d570a41d0ea8da7910c541ac0cec64550681112ec0bec72b3e8451f70e510255
+2026-06-25T05:46:22Z,G5,Ashwin Balasubramaniam,GATE:G5,context/artifacts/contracts/api-spec.yaml,74a66206175c7c95984d6f81f5ecf24a93ce020ea55fbf0ca88122209207cc35
+2026-06-25T05:46:22Z,G5,Ashwin Balasubramaniam,GATE:G5,context/artifacts/runbooks/expense-platform-deploy.md,be4b1876c614cb28002b1c60eb67e195142adbfefd24108792c1c7536290e665
+2026-06-25T05:46:22Z,G5,Ashwin Balasubramaniam,GATE:G5,context/artifacts/coverage-matrix-expense-platform.md,88fe3ed4083e7283dcee01b3219e20fc491a19869a2b2947d7ea8801dbb1f284
+2026-06-25T05:46:22Z,G5,Ashwin Balasubramaniam,GATE:G5,context/artifacts/sow-expense-platform.md,b86a6e43b86ff3499c4406ddbca777df252a1886a61c157dd57a6331481f5646
+2026-06-25T05:46:22Z,G5,Ashwin Balasubramaniam,GATE:G5,context/artifacts/attestation/developer-phase-4-attestation.md,791610177cbc1d530f388b1bcce3a5c4c53267bf677c9109ac3f29d446f847cf
+2026-06-25T05:46:22Z,G5,Ashwin Balasubramaniam,GATE:G5,context/artifacts/attestation/devops-phase-3-attestation.md,b69cf1904b7640b0e404d11d549d85d27787f6112a9ad28fa18145a8151f61bf
+2026-06-25T05:46:22Z,G5,Ashwin Balasubramaniam,GATE:G5,context/artifacts/attestation/data-engineer-phase-5-attestation.md,80d2032e53a1962c2aab0137dff1cd9cad687e466fe234ec4a1a0117a5bae443
+2026-06-25T05:46:22Z,G5,Ashwin Balasubramaniam,GATE:G5,context/artifacts/data-model.md,becefb0806cdfe431f15bcb41242d7ddee77a3459b06d4810a9eccda66a6b27e
+2026-06-25T05:46:22Z,G5,Ashwin Balasubramaniam,GATE:G5,context/artifacts/release-notes-expense-platform.md,b0775d503b5ef13d58b24a294b8d4e96c6042dcb0357aa4a15f246e53502f876
+2026-06-25T05:46:22Z,G5,Ashwin Balasubramaniam,GATE:G5,context/artifacts/timeline-expense-platform.md,037efc76a12f3ce6d652e0262e94d6b7a50177f9b25120d9945209af2c43818a
+2026-06-25T05:46:22Z,G5,Ashwin Balasubramaniam,GATE:G5,context/artifacts/uat-execution-sheet-expense-platform.md,2a6ba3e254d456a8b2e30f35035b3a900e33e33d8f9ba268bd7cbc70cfe0ea6d
+2026-07-02T06:18:45Z,G6-CR1,Ashwin Balasubramaniam,GATE:G6-CR1,context/requirements/expense-status.feature,44b6bf8f02527ac941cd6f24f88a92e98a4871ff07d60355f76e0397f6e06778
+2026-07-02T06:18:45Z,G6-CR1,Ashwin Balasubramaniam,GATE:G6-CR1,context/requirements/expense-analytics.feature,d38eb989dd2a293cdc02951ee37aadc6fa05f65ffe7cd18a159704c02d99b5b6
+2026-07-02T06:18:45Z,G6-CR1,Ashwin Balasubramaniam,GATE:G6-CR1,context/requirements/expense-submission.feature,3c2fa702154e0799897d93ed27234db8ca0e04c9939ac9a2282380c0772c6a5d
+2026-07-02T06:18:45Z,G6-CR1,Ashwin Balasubramaniam,GATE:G6-CR1,context/requirements/expense-policy.feature,ed72e04c6c86378537f8969ab82c63e5d924f1782fde90f7cbf133a9e4ea2dd5
+2026-07-02T06:18:45Z,G6-CR1,Ashwin Balasubramaniam,GATE:G6-CR1,context/requirements/expense-auth.feature,a207e8ca47a0d91445681de1f110b221129ba5c2a4faa39c21efbb77d94fe936
+2026-07-02T06:18:45Z,G6-CR1,Ashwin Balasubramaniam,GATE:G6-CR1,context/requirements/expense-approval.feature,00a82fa44e009c3017755a9534eb5180f0e135019da09770e5b69b7afec31eed
+2026-07-02T06:18:45Z,G6-CR1,Ashwin Balasubramaniam,GATE:G6-CR1,context/decisions/ADR-0002-event-sourced-lifecycle.md,5673fed020a232bd13a31bba6371e4b78e2efa9692cee6b981f7b147b6b44748
+2026-07-02T06:18:45Z,G6-CR1,Ashwin Balasubramaniam,GATE:G6-CR1,context/decisions/ADR-0001-stack-and-ai-boundary.md,017e47a724b94f18c67909c92b22a90d6ad89a8fd821b4c25d37ba0b57f0719c
+2026-07-02T06:18:45Z,G6-CR1,Ashwin Balasubramaniam,GATE:G6-CR1,context/artifacts/design/architecture.md,203dc5cc6061fddae8b9f8a42279fa263f4e9478488f265860cca0d7c1cfa458
+2026-07-02T06:18:45Z,G6-CR1,Ashwin Balasubramaniam,GATE:G6-CR1,context/artifacts/design/wireframes.md,d570a41d0ea8da7910c541ac0cec64550681112ec0bec72b3e8451f70e510255
+2026-07-02T06:18:45Z,G6-CR1,Ashwin Balasubramaniam,GATE:G6-CR1,context/artifacts/contracts/api-spec.yaml,ce211269c2d3365c3591b120953a811ee15720da5d0575d61e35ae9b3c99a557
+2026-07-02T06:18:45Z,G6-CR1,Ashwin Balasubramaniam,GATE:G6-CR1,context/artifacts/runbooks/expense-platform-deploy.md,be4b1876c614cb28002b1c60eb67e195142adbfefd24108792c1c7536290e665
+2026-07-02T06:18:45Z,G6-CR1,Ashwin Balasubramaniam,GATE:G6-CR1,context/artifacts/coverage-matrix-expense-platform.md,2e6e1c49779ded2ad93a56a9ef175f01bb09e50ffdf997ef8d50bae55c3c0166
+2026-07-02T06:18:45Z,G6-CR1,Ashwin Balasubramaniam,GATE:G6-CR1,context/artifacts/sow-expense-platform.md,b86a6e43b86ff3499c4406ddbca777df252a1886a61c157dd57a6331481f5646
+2026-07-02T06:18:45Z,G6-CR1,Ashwin Balasubramaniam,GATE:G6-CR1,context/artifacts/attestation/developer-phase-4-attestation.md,791610177cbc1d530f388b1bcce3a5c4c53267bf677c9109ac3f29d446f847cf
+2026-07-02T06:18:45Z,G6-CR1,Ashwin Balasubramaniam,GATE:G6-CR1,context/artifacts/attestation/devops-phase-3-attestation.md,b69cf1904b7640b0e404d11d549d85d27787f6112a9ad28fa18145a8151f61bf
+2026-07-02T06:18:45Z,G6-CR1,Ashwin Balasubramaniam,GATE:G6-CR1,context/artifacts/attestation/developer-cr1-attestation.md,097eb18f8cd20b495ad05dbf70aa4ba6d5f3400ddcb8727f3f31477fca57b34d
+2026-07-02T06:18:45Z,G6-CR1,Ashwin Balasubramaniam,GATE:G6-CR1,context/artifacts/attestation/data-engineer-phase-5-attestation.md,80d2032e53a1962c2aab0137dff1cd9cad687e466fe234ec4a1a0117a5bae443
+2026-07-02T06:18:45Z,G6-CR1,Ashwin Balasubramaniam,GATE:G6-CR1,context/artifacts/attestation/tester-cr1-attestation.md,18d88b440200a81d843f8e72e97ba6ad845773726fc2bd26941fcb34619bdb8b
+2026-07-02T06:18:45Z,G6-CR1,Ashwin Balasubramaniam,GATE:G6-CR1,context/artifacts/data-model.md,becefb0806cdfe431f15bcb41242d7ddee77a3459b06d4810a9eccda66a6b27e
+2026-07-02T06:18:45Z,G6-CR1,Ashwin Balasubramaniam,GATE:G6-CR1,context/artifacts/release-notes-expense-platform.md,b0775d503b5ef13d58b24a294b8d4e96c6042dcb0357aa4a15f246e53502f876
+2026-07-02T06:18:45Z,G6-CR1,Ashwin Balasubramaniam,GATE:G6-CR1,context/artifacts/timeline-expense-platform.md,037efc76a12f3ce6d652e0262e94d6b7a50177f9b25120d9945209af2c43818a
+2026-07-02T06:18:45Z,G6-CR1,Ashwin Balasubramaniam,GATE:G6-CR1,context/artifacts/uat-execution-sheet-expense-platform.md,2a6ba3e254d456a8b2e30f35035b3a900e33e33d8f9ba268bd7cbc70cfe0ea6d
+2026-08-22T05:04:25Z,G1 · solution-owner,sri,GATE:G1 · solution-owner,context/requirements/expense-status.feature,a5e47e810bccda3f41f85b0eb7d0b85b6ab91bb8adff69128d9bddac9877fc28
+2026-08-22T05:04:25Z,G1 · solution-owner,sri,GATE:G1 · solution-owner,context/requirements/expense-analytics.feature,d38eb989dd2a293cdc02951ee37aadc6fa05f65ffe7cd18a159704c02d99b5b6
+2026-08-22T05:04:25Z,G1 · solution-owner,sri,GATE:G1 · solution-owner,context/requirements/expense-submission.feature,d7893c42ef59c978c9ed2ac20e7b4f5d2405ab568bcb9c5c3ecd47b332b2f8f9
+2026-08-22T05:04:25Z,G1 · solution-owner,sri,GATE:G1 · solution-owner,context/requirements/expense-policy.feature,40a0cc09dda08ccad4a61be4b6bd75e50ae0a32590c22ec7e9e2beb4563192da
+2026-08-22T05:04:25Z,G1 · solution-owner,sri,GATE:G1 · solution-owner,context/requirements/expense-analytics-access.feature,4f6d8e34700bf6d84be456e172a207a0250d0fcf56991481e000791ca0ba4425
+2026-08-22T05:04:25Z,G1 · solution-owner,sri,GATE:G1 · solution-owner,context/requirements/expense-auth.feature,a207e8ca47a0d91445681de1f110b221129ba5c2a4faa39c21efbb77d94fe936
+2026-08-22T05:04:25Z,G1 · solution-owner,sri,GATE:G1 · solution-owner,context/requirements/expense-approval.feature,bb33a0bd5cfcaea0c21e77444a52ae8495b3bffcff0c360c9726f76e7ff97778
+2026-08-22T05:04:25Z,G1 · solution-owner,sri,GATE:G1 · solution-owner,context/artifacts/sow-baseline.md,23aab8f422e7c16ec2da5e63a025356428a45a29c0fc19ea8526002a56b25ce7
+2026-08-22T05:04:25Z,G1 · solution-owner,sri,GATE:G1 · solution-owner,context/artifacts/sow-expense-platform.md,b86a6e43b86ff3499c4406ddbca777df252a1886a61c157dd57a6331481f5646
+2026-08-22T05:04:25Z,G1 · solution-owner,sri,GATE:G1 · solution-owner,context/artifacts/timeline-expense-platform.md,037efc76a12f3ce6d652e0262e94d6b7a50177f9b25120d9945209af2c43818a
+2026-08-22T05:10:18Z,G2 · architect,sri,GATE:G2 · architect,context/decisions/ADR-0002-event-sourced-lifecycle.md,5673fed020a232bd13a31bba6371e4b78e2efa9692cee6b981f7b147b6b44748
+2026-08-22T05:10:18Z,G2 · architect,sri,GATE:G2 · architect,context/decisions/ADR-0001-ai-boundary-and-stack.md,8dfed7824c1a193253f58a3ab7101a6523320bca65c1e652a38c2015d860943d
+2026-08-22T05:10:18Z,G2 · architect,sri,GATE:G2 · architect,context/decisions/ADR-0001-stack-and-ai-boundary.md,017e47a724b94f18c67909c92b22a90d6ad89a8fd821b4c25d37ba0b57f0719c
+2026-08-22T05:10:18Z,G2 · architect,sri,GATE:G2 · architect,context/artifacts/design/architecture.md,098715c48a4e75502cb32a9327d5038c99314c9d05489128e61da3735c0db57e
+2026-08-22T05:10:18Z,G2 · architect,sri,GATE:G2 · architect,context/artifacts/design/wireframes.md,d570a41d0ea8da7910c541ac0cec64550681112ec0bec72b3e8451f70e510255
+2026-08-22T05:10:18Z,G2 · architect,sri,GATE:G2 · architect,context/artifacts/contracts/api-spec.yaml,41fac8cbe950ef4667ded201b44b8e9629ebbb620aab1af268a75df46e52c971
