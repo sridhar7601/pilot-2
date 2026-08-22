@@ -1,0 +1,13 @@
+{
+  "slug": "pilot",
+  "name": "Expense Management Platform",
+  "brief": "The original pilot delivered through the framework, before the cockpit existed.",
+  "createdAt": 1787380862984,
+  "github": {
+    "owner": "sridhar7601",
+    "repo": "pilot-2",
+    "fullName": "sridhar7601/pilot-2",
+    "htmlUrl": "https://github.com/sridhar7601/pilot-2",
+    "defaultBranch": "main"
+  }
+}
