@@ -1,0 +1,696 @@
+openapi: 3.0.3
+info:
+  title: Expense Management & Reimbursement Platform API
+  version: 0.1.0
+  description: >
+    Interface contract for the pilot. Locked before build (Gate G2). Every path traces to a
+    REQ-* id via the `x-requirements` extension. Changes after lock are architecture escalations,
+    not silent edits.
+servers:
+  - url: /api/v1
+
+security:
+  - bearerAuth: []
+
+tags:
+  - name: auth
+  - name: expenses
+  - name: receipts
+  - name: approvals
+  - name: policy
+  - name: analytics
+  - name: reimbursements
+
+paths:
+  # ---------------------------------------------------------------- AUTH (REQ-AUTH-1)
+  /auth/session:
+    get:
+      tags: [auth]
+      summary: Return the current authenticated session and role
+      x-requirements: [REQ-AUTH-1]
+      responses:
+        "200":
+          description: Active session
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Session"
+        "401":
+          $ref: "#/components/responses/Unauthorized"
+
+  /auth/demo-login:
+    post:
+      tags: [auth]
+      summary: Pilot-only demo auth fallback (disabled outside pilot profile)
+      x-requirements: [REQ-AUTH-1]
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required: [demo_account_id]
+              properties:
+                demo_account_id: { type: string }
+      responses:
+        "200":
+          description: Demo session issued; session.is_demo_auth is true
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Session"
+        "403":
+          description: Demo auth disabled in this environment
+
+  # ---------------------------------------------------------------- RECEIPTS (REQ-EXP-1)
+  /receipts:
+    post:
+      tags: [receipts]
+      summary: Register a receipt upload and receive a signed upload URL
+      x-requirements: [REQ-EXP-1]
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required: [filename, content_type, size_bytes]
+              properties:
+                filename: { type: string }
+                content_type:
+                  type: string
+                  enum: [image/jpeg, image/png, application/pdf]
+                size_bytes: { type: integer, maximum: 10485760 }
+      responses:
+        "201":
+          description: Upload URL issued
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  receipt_id: { type: string, format: uuid }
+                  upload_url: { type: string, format: uri }
+        "415":
+          description: Unsupported file type — response lists accepted types (JPEG, PNG, PDF)
+        "413":
+          description: File exceeds the 10MB maximum size
+
+  /receipts/{receiptId}/status:
+    get:
+      tags: [receipts]
+      summary: Poll receipt extraction status and results
+      x-requirements: [REQ-EXP-1]
+      parameters:
+        - $ref: "#/components/parameters/ReceiptId"
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ReceiptExtraction"
+        "404":
+          $ref: "#/components/responses/NotFound"
+
+  # ---------------------------------------------------------------- EXPENSES (REQ-EXP-1, REQ-AUTH-1)
+  /expenses:
+    get:
+      tags: [expenses]
+      summary: List expenses visible to the caller's role
+      description: >
+        Employees see only their own; approvers see queue-relevant items via /approvals/queue
+        instead; finance/admin see all. Enforced by RLS in addition to this filter.
+      x-requirements: [REQ-AUTH-1]
+      parameters:
+        - name: status
+          in: query
+          schema: { type: string }
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                type: array
+                items: { $ref: "#/components/schemas/ExpenseSummary" }
+    post:
+      tags: [expenses]
+      summary: Submit an expense (with policy evaluation) after receipt confirmation
+      x-requirements: [REQ-EXP-1, REQ-EXP-3]
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/ExpenseSubmission"
+      responses:
+        "201":
+          description: Created in status "submitted"; includes policy verdict
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ExpenseWithVerdict"
+        "400":
+          description: >
+            Validation error — missing required field (amount/date/category/cost centre),
+            future-dated expense, or unsupported currency
+          content:
+            application/json:
+              schema: { $ref: "#/components/schemas/ValidationError" }
+        "422":
+          description: Submission blocked by policy verdict "block"
+          content:
+            application/json:
+              schema: { $ref: "#/components/schemas/PolicyVerdict" }
+
+  /expenses/{expenseId}:
+    get:
+      tags: [expenses]
+      summary: Get expense detail
+      x-requirements: [REQ-EXP-1, REQ-EXP-4]
+      parameters:
+        - $ref: "#/components/parameters/ExpenseId"
+      responses:
+        "200":
+          content:
+            application/json:
+              schema: { $ref: "#/components/schemas/ExpenseDetail" }
+        "403":
+          $ref: "#/components/responses/Forbidden"
+        "404":
+          $ref: "#/components/responses/NotFound"
+
+  /expenses/{expenseId}/events:
+    get:
+      tags: [expenses]
+      summary: Human-readable, append-only event timeline for an expense
+      x-requirements: [REQ-EXP-4]
+      parameters:
+        - $ref: "#/components/parameters/ExpenseId"
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                type: array
+                items: { $ref: "#/components/schemas/ExpenseEvent" }
+        "403":
+          description: Caller is neither the owner, their approver, nor finance
+          content:
+            application/json:
+              schema: { $ref: "#/components/schemas/Error" }
+
+  /expenses/{expenseId}/dispute:
+    post:
+      tags: [expenses]
+      summary: Raise a dispute on a reimbursed/partially-reimbursed expense
+      x-requirements: [REQ-EXP-4]
+      parameters:
+        - $ref: "#/components/parameters/ExpenseId"
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required: [reason]
+              properties:
+                reason: { type: string }
+      responses:
+        "201":
+          description: Expense moves to status "disputed"; routed to finance queue with full history
+        "409":
+          description: Expense is not in a disputable status
+
+  # ---------------------------------------------------------------- APPROVALS (REQ-EXP-2)
+  /approvals/queue:
+    get:
+      tags: [approvals]
+      summary: Risk-sorted approval queue for the current approver
+      description: AI-flagged items are returned before clean items; each flagged item carries a reason.
+      x-requirements: [REQ-EXP-2, REQ-AUTH-1]
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                type: array
+                items: { $ref: "#/components/schemas/QueueItem" }
+
+  /approvals/{stepId}/approve:
+    post:
+      tags: [approvals]
+      summary: Approve a single approval step
+      x-requirements: [REQ-EXP-2]
+      parameters:
+        - $ref: "#/components/parameters/StepId"
+      responses:
+        "200":
+          description: Step approved; expense advances or reaches "approved" if final step
+        "403":
+          description: Self-approval blocked; caller is the submitter
+        "409":
+          description: Step already resolved by a concurrent decision
+
+  /approvals/{stepId}/reject:
+    post:
+      tags: [approvals]
+      summary: Reject a single approval step (comment required)
+      x-requirements: [REQ-EXP-2]
+      parameters:
+        - $ref: "#/components/parameters/StepId"
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required: [comment]
+              properties:
+                comment: { type: string, minLength: 1 }
+      responses:
+        "200":
+          description: Expense moves to status "rejected"
+        "400":
+          description: Rejection blocked — comment is required
+        "409":
+          description: Step already resolved by a concurrent decision
+
+  /approvals/{stepId}/return-for-edit:
+    post:
+      tags: [approvals]
+      summary: Return an in-approval expense for edit, preserving history
+      x-requirements: [REQ-EXP-2]
+      parameters:
+        - $ref: "#/components/parameters/StepId"
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required: [comment]
+              properties:
+                comment: { type: string, minLength: 1 }
+      responses:
+        "200":
+          description: Expense moves to status "returned_for_edit"; timeline records the comment
+
+  /approvals/batch-approve:
+    post:
+      tags: [approvals]
+      summary: Approve multiple clean, unflagged expenses in one action
+      x-requirements: [REQ-EXP-2]
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required: [step_ids]
+              properties:
+                step_ids:
+                  type: array
+                  items: { type: string, format: uuid }
+      responses:
+        "200":
+          description: >
+            Each eligible step is approved with its own individually recorded event; any
+            AI-flagged step in the selection is excluded and reported as requiring individual review.
+          content:
+            application/json:
+              schema: { $ref: "#/components/schemas/BatchApprovalResult" }
+
+  # ---------------------------------------------------------------- POLICY (REQ-EXP-3)
+  /policy/versions:
+    get:
+      tags: [policy]
+      summary: List policy versions (audit history retained, never deleted)
+      x-requirements: [REQ-EXP-3]
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                type: array
+                items: { $ref: "#/components/schemas/PolicyVersion" }
+    post:
+      tags: [policy]
+      summary: Publish a new policy version (admin only)
+      x-requirements: [REQ-EXP-3]
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema: { $ref: "#/components/schemas/PolicyVersionDraft" }
+      responses:
+        "201":
+          description: Stored with an incremented version number
+        "400":
+          description: Rejected — effective date must be today or later
+
+  /policy/versions/{versionId}/simulate:
+    post:
+      tags: [policy]
+      summary: Dry-run a draft policy version against the last 30 days of submitted expenses
+      x-requirements: [REQ-EXP-3]
+      parameters:
+        - name: versionId
+          in: path
+          required: true
+          schema: { type: string, format: uuid }
+      responses:
+        "200":
+          description: Simulation result; no live evaluation is affected
+          content:
+            application/json:
+              schema: { $ref: "#/components/schemas/PolicySimulationResult" }
+
+  /policy/evaluate:
+    post:
+      tags: [policy]
+      summary: Evaluate a candidate expense against the active policy version (pre-submit check)
+      x-requirements: [REQ-EXP-3]
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema: { $ref: "#/components/schemas/ExpenseSubmission" }
+      responses:
+        "200":
+          content:
+            application/json:
+              schema: { $ref: "#/components/schemas/PolicyVerdict" }
+
+  # ---------------------------------------------------------------- ANALYTICS (REQ-EXP-5)
+  /analytics/dashboard:
+    get:
+      tags: [analytics]
+      summary: Company-wide spend dashboard (finance/admin only)
+      x-requirements: [REQ-EXP-5]
+      responses:
+        "200":
+          content:
+            application/json:
+              schema: { $ref: "#/components/schemas/DashboardData" }
+        "403":
+          $ref: "#/components/responses/Forbidden"
+
+  /analytics/query:
+    post:
+      tags: [analytics]
+      summary: Natural-language query over spend data, guarded to read-only aggregate SQL
+      x-requirements: [REQ-EXP-5]
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required: [question]
+              properties:
+                question: { type: string }
+      responses:
+        "200":
+          description: Guarded aggregate result, or a canned-report fallback for low-confidence/unsafe input
+          content:
+            application/json:
+              schema: { $ref: "#/components/schemas/NLQueryResult" }
+        "403":
+          $ref: "#/components/responses/Forbidden"
+
+  # ---------------------------------------------------------------- REIMBURSEMENTS (REQ-EXP-4)
+  /reimbursements/payout-runs/{runId}/mark-paid:
+    post:
+      tags: [reimbursements]
+      summary: Finance marks a batch payout run as paid
+      x-requirements: [REQ-EXP-4]
+      parameters:
+        - name: runId
+          in: path
+          required: true
+          schema: { type: string, format: uuid }
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                lines:
+                  type: array
+                  items:
+                    type: object
+                    required: [expense_id, amount_paid]
+                    properties:
+                      expense_id: { type: string, format: uuid }
+                      amount_paid: { type: number }
+                      payout_reference: { type: string }
+      responses:
+        "200":
+          description: >
+            Each expense moves to "reimbursed" or "partially_reimbursed" (amount_paid < approved
+            amount); timeline updated with payout reference
+
+components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+
+  parameters:
+    ExpenseId:
+      name: expenseId
+      in: path
+      required: true
+      schema: { type: string, format: uuid }
+    ReceiptId:
+      name: receiptId
+      in: path
+      required: true
+      schema: { type: string, format: uuid }
+    StepId:
+      name: stepId
+      in: path
+      required: true
+      schema: { type: string, format: uuid }
+
+  responses:
+    Unauthorized:
+      description: Missing/expired token — client must re-authenticate before any action is taken
+    Forbidden:
+      description: Caller's role does not permit this action
+      content:
+        application/json:
+          schema: { $ref: "#/components/schemas/Error" }
+    NotFound:
+      description: Resource not found
+
+  schemas:
+    Error:
+      type: object
+      properties:
+        code: { type: string }
+        message: { type: string }
+
+    ValidationError:
+      allOf:
+        - $ref: "#/components/schemas/Error"
+        - type: object
+          properties:
+            field: { type: string }
+
+    Session:
+      type: object
+      properties:
+        user_id: { type: string, format: uuid }
+        role:
+          type: string
+          enum: [employee, approver, finance, admin]
+        is_demo_auth: { type: boolean }
+        expires_at: { type: string, format: date-time }
+
+    ReceiptExtraction:
+      type: object
+      properties:
+        receipt_id: { type: string, format: uuid }
+        status:
+          type: string
+          enum: [processing, extracted, manual_entry_required, failed]
+        extracted_fields:
+          type: object
+          properties:
+            merchant: { type: string }
+            date: { type: string, format: date }
+            amount: { type: number }
+            currency: { type: string }
+            category: { type: string }
+            line_items:
+              type: array
+              items: { type: object }
+            confidence:
+              type: object
+              additionalProperties: { type: number, minimum: 0, maximum: 1 }
+        image_url: { type: string, format: uri }
+
+    ExpenseLineItem:
+      type: object
+      required: [amount, cost_centre]
+      properties:
+        amount: { type: number }
+        cost_centre: { type: string }
+        category: { type: string }
+
+    ExpenseSubmission:
+      type: object
+      required: [amount, currency, date, category, cost_centre]
+      properties:
+        receipt_id: { type: string, format: uuid, nullable: true }
+        amount: { type: number }
+        currency: { type: string }
+        date: { type: string, format: date }
+        category: { type: string }
+        cost_centre: { type: string }
+        line_items:
+          type: array
+          items: { $ref: "#/components/schemas/ExpenseLineItem" }
+        no_receipt_declaration: { type: string, nullable: true }
+        duplicate_ack: { type: boolean, default: false }
+
+    PolicyVerdict:
+      type: object
+      properties:
+        verdict: { type: string, enum: [pass, warn, block] }
+        triggered_rules:
+          type: array
+          items:
+            type: object
+            properties:
+              rule_id: { type: string }
+              rule_name: { type: string }
+              threshold: { type: number }
+              actual_value: { type: number }
+              message: { type: string }
+        plain_language_explanation: { type: string }
+
+    ExpenseWithVerdict:
+      allOf:
+        - $ref: "#/components/schemas/ExpenseSummary"
+        - type: object
+          properties:
+            policy_verdict: { $ref: "#/components/schemas/PolicyVerdict" }
+
+    ExpenseSummary:
+      type: object
+      properties:
+        id: { type: string, format: uuid }
+        status:
+          type: string
+          enum: [draft, submitted, in_approval, returned_for_edit, approved, rejected,
+                 reimbursement_initiated, reimbursed, partially_reimbursed,
+                 reimbursement_failed, disputed]
+        amount: { type: number }
+        currency: { type: string }
+        home_currency_amount: { type: number }
+        conversion_rate: { type: number, nullable: true }
+        conversion_timestamp: { type: string, format: date-time, nullable: true }
+        submitter_id: { type: string, format: uuid }
+        flagged: { type: boolean }
+        flag_reason: { type: string, nullable: true }
+
+    ExpenseDetail:
+      allOf:
+        - $ref: "#/components/schemas/ExpenseSummary"
+        - type: object
+          properties:
+            predicted_payout_date:
+              type: string
+              format: date
+              nullable: true
+              description: Labelled as an estimate, not a guarantee, wherever displayed
+            policy_version_id: { type: string, format: uuid }
+            amount_outstanding: { type: number, nullable: true }
+            amount_paid: { type: number, nullable: true }
+
+    ExpenseEvent:
+      type: object
+      properties:
+        id: { type: string, format: uuid }
+        event_type: { type: string }
+        actor_id: { type: string, format: uuid, nullable: true }
+        description: { type: string }
+        occurred_at: { type: string, format: date-time }
+        payload: { type: object }
+
+    QueueItem:
+      type: object
+      properties:
+        step_id: { type: string, format: uuid }
+        expense_id: { type: string, format: uuid }
+        flagged: { type: boolean }
+        flag_reason: { type: string, nullable: true }
+        due_date: { type: string, format: date-time }
+
+    BatchApprovalResult:
+      type: object
+      properties:
+        approved_step_ids:
+          type: array
+          items: { type: string, format: uuid }
+        excluded:
+          type: array
+          items:
+            type: object
+            properties:
+              step_id: { type: string, format: uuid }
+              reason: { type: string }
+
+    PolicyVersion:
+      type: object
+      properties:
+        id: { type: string, format: uuid }
+        version_number: { type: integer }
+        effective_date: { type: string, format: date }
+        status: { type: string, enum: [draft, active, retired] }
+
+    PolicyVersionDraft:
+      type: object
+      required: [rules, effective_date]
+      properties:
+        effective_date: { type: string, format: date }
+        rules:
+          type: array
+          items: { type: object }
+
+    PolicySimulationResult:
+      type: object
+      properties:
+        pass_count: { type: integer }
+        warn_count: { type: integer }
+        block_count: { type: integer }
+        sample_size: { type: integer }
+
+    DashboardData:
+      type: object
+      properties:
+        total_spend: { type: number }
+        by_category: { type: object, additionalProperties: { type: number } }
+        by_cost_centre: { type: object, additionalProperties: { type: number } }
+        by_team: { type: object, additionalProperties: { type: number } }
+        anomaly_alerts:
+          type: array
+          items:
+            type: object
+            properties:
+              description: { type: string }
+              severity: { type: string }
+
+    NLQueryResult:
+      type: object
+      properties:
+        confidence: { type: number, minimum: 0, maximum: 1 }
+        sql_used: { type: string, nullable: true }
+        rows:
+          type: array
+          items: { type: object }
+        fallback_report: { type: boolean }
+        fallback_reason: { type: string, nullable: true }
